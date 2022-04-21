@@ -12,6 +12,11 @@ class HobotSorter
     private array $hobots = [];
 
     /**
+     * @var bool
+     */
+    private bool $isSortedFlag = false;
+
+    /**
      * @param Hobot $hobot
      *
      * @return void
@@ -19,6 +24,7 @@ class HobotSorter
     public function addHobot(Hobot $hobot)
     {
         $this->hobots[] = $hobot;
+        $this->isSortedFlag = false;
     }
 
     /**
@@ -30,6 +36,14 @@ class HobotSorter
     }
 
     /**
+     * @return bool
+     */
+    public function isSorted(): bool
+    {
+        return $this->isSortedFlag;
+    }
+
+    /**
      * @return void
      */
     public function sort(): void
@@ -37,5 +51,6 @@ class HobotSorter
         usort($this->hobots, function (Hobot $one, Hobot $two) {
             return $one->getLength() <=> $two->getLength();
         });
+        $this->isSortedFlag = true;
     }
 }
