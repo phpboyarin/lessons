@@ -1,0 +1,20 @@
+{
+    "name": "php-boyarin/lessons",
+    "description": "Set of example code files",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPBoyarin\\Lessons\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PHP Boyarin",
+            "email": "contact@phpboyarin.ru"
+        }
+    ],
+    "require": {}
+}
