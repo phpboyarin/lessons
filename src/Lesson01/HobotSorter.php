@@ -53,4 +53,21 @@ class HobotSorter
         });
         $this->isSortedFlag = true;
     }
+
+    /**
+     * @return void
+     */
+    public function sortWithoutSpaceship(): void
+    {
+        usort($this->hobots, function (Hobot $one, Hobot $two) {
+            if ($one->getLength() === $two->getLength()) {
+                return 0;
+            } elseif ($one->getLength() > $two->getLength()) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+        $this->isSortedFlag = true;
+    }
 }
