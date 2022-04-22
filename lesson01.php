@@ -16,6 +16,7 @@ $blue = new Color('Blue', '#0000FF');
 // для стабильности результата
 mt_srand(17);
 
+// помещаем хоботы в сортировщик
 $sorter->addHobot(new Hobot(mt_rand(50, 100), $red));
 $sorter->addHobot(new Hobot(mt_rand(50, 100), $red));
 $sorter->addHobot(new Hobot(mt_rand(50, 100), $red));
@@ -31,8 +32,10 @@ $sorter->addHobot(new Hobot(mt_rand(0, 50), $blue));
 $sorter->addHobot(new Hobot(mt_rand(0, 50), $blue));
 $sorter->addHobot(new Hobot(mt_rand(0, 50), $blue));
 
+// сортируем хоботы по длине
 $sorter->sort();
 
+// выводим результат
 foreach ($sorter->getHobots() as $hobot) {
     printf('%d %s%s', $hobot->getLength(), $hobot->getColor()->getName(), PHP_EOL);
 }
