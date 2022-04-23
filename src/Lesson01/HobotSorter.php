@@ -44,6 +44,9 @@ class HobotSorter
     }
 
     /**
+     * Здесь содержится максимум сахара: анонимная функция и космический
+     * корабль. Не беспокойтесь, скачков инсулина этот сахар не вызывает.
+     *
      * @return void
      */
     public function sort(): void
@@ -55,6 +58,9 @@ class HobotSorter
     }
 
     /**
+     * На самом деле, в этом методе все равно присутствует синтаксический
+     * сахар в виде анонимной функции.
+     *
      * @return void
      */
     public function sortWithoutSpaceship(): void
@@ -69,5 +75,36 @@ class HobotSorter
             }
         });
         $this->isSortedFlag = true;
+    }
+
+    /**
+     * В этой функции не используется синтаксический сахар в виде
+     * анонимной функции. Все по-честному: второй аргумент ссылается
+     * на настоящий метод объекта.
+     *
+     * @return void
+     */
+    public function sortWithoutSugarAtAll(): void
+    {
+        usort($this->hobots, [$this, 'sortByLength']);
+        $this->isSortedFlag = true;
+
+    }
+
+    /**
+     * @param Hobot $one
+     * @param Hobot $two
+     *
+     * @return int
+     */
+    private function sortByLength(Hobot $one, Hobot $two): int
+    {
+        if ($one->getLength() === $two->getLength()) {
+            return 0;
+        } elseif ($one->getLength() > $two->getLength()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }
